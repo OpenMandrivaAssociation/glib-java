@@ -1,6 +1,6 @@
 Name:           glib-java
 Version:        0.4.2
-Release:        %mkrel 2
+Release:        %mkrel 3
 Epoch:          0
 Summary:        Base Library for the Java-GNOME libraries 
 URL:            http://java-gnome.sourceforge.net
@@ -9,7 +9,6 @@ License:        LGPL
 Group:          System/Libraries
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  docbook-utils
-BuildRequires:  gcc-java
 BuildRequires:  glib2-devel >= 0:2.12.4
 BuildRequires:  java-devel >= 0:1.4.2
 BuildRequires:  java-gcj-compat-devel
@@ -42,6 +41,7 @@ export JAVAC=%{javac}
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
 export GCJ=%{gcj}
+export CPPFLAGS="-I%{java_home}/include -I%{java_home}/include/linux"
 %configure2_5x --with-jardir=%{_javadir}
 %make
 
