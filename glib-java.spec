@@ -23,6 +23,7 @@ GNOME through Java.
 Summary:        Development files for %{name}
 Group:          Development/Java
 Requires:       %{name} = %{version}-%{release}
+Conflicts:      glib-java < 0.4.2-3
 
 %description    devel
 Development files for %{name}.
