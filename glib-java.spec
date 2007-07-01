@@ -1,16 +1,14 @@
 Name:           glib-java
 Version:        0.4.2
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Base Library for the Java-GNOME libraries 
 URL:            http://java-gnome.sourceforge.net
 Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/glib-java/0.4/glib-java-%{version}.tar.bz2
 License:        LGPL
-Group:          Development/Java
+Group:          System/Libraries
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:       glib2 >= 2.12.4
 BuildRequires:  docbook-utils
-BuildRequires:  gcc-java >= 0:4.0.1
 BuildRequires:  glib2-devel >= 0:2.12.4
 BuildRequires:  java-devel >= 0:1.4.2
 BuildRequires:  java-gcj-compat-devel
@@ -22,15 +20,12 @@ Glib-java is a base framework for the Java-GNOME libraries. Allowing the use of
 GNOME through Java.
 
 %package        devel
-Summary:        Compressed Java source files for %{name}
+Summary:        Development files for %{name}
 Group:          Development/Java
 Requires:       %{name} = %{version}-%{release}
 
 %description    devel
-Compressed Java source for %{name}. This is useful if you are developing
-applications with IDEs like Eclipse.
-
-
+Development files for %{name}.
 
 %prep
 %setup -q
@@ -45,6 +40,7 @@ export JAVA=%{java}
 export JAVAC=%{javac}
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
+export GCJ=%{gcj}
 %configure2_5x --with-jardir=%{_javadir}
 %make
 
@@ -69,6 +65,8 @@ pushd $RPM_BUILD_ROOT%{_javadir}
 ln -sf $jarname$jarversion-src-%{version}.zip $jarname$jarversion-src.zip
 popd
 
+rm -r %{buildroot}%{_docdir}/%{name}-%{version}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -77,18 +75,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc doc/api AUTHORS ChangeLog COPYING INSTALL NEWS README 
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/*
-%{_libdir}/*so*
-%{_libdir}/*la
-%{_libdir}/pkgconfig/*
+%doc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+%{_libdir}/libglibjava-*.so
+%{_libdir}/libglibjni-*.so
 %{_javadir}/*.jar
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
 
 %files devel
 %defattr(-,root,root)
+%doc doc/api
+%dir %{_includedir}/%{name}
+%{_includedir}/%{name}/*
+%{_libdir}/*.la
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
 %{_javadir}/*.zip
-
-
