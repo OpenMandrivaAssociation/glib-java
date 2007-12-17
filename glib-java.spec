@@ -7,7 +7,6 @@ URL:            http://java-gnome.sourceforge.net
 Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/glib-java/0.4/glib-java-%{version}.tar.bz2
 License:        LGPL
 Group:          System/Libraries
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  docbook-utils
 BuildRequires:  glib2-devel >= 0:2.12.4
 BuildRequires:  java-devel >= 0:1.4.2
