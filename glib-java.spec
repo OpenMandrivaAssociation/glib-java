@@ -44,7 +44,8 @@ export JAVADOC=%{javadoc}
 export GCJ=%{gcj}
 export CPPFLAGS="-I%{java_home}/include -I%{java_home}/include/linux"
 %configure2_5x --with-jardir=%{_javadir}
-%make
+# 64bit java doesn't seem to like parralell build ("Cannot create GC thread. Out of system resources"):
+make
 
 # pack up the java source
 jarversion=$(echo -n %{version} | cut -d . -f -2)
