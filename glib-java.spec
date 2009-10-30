@@ -30,10 +30,6 @@ Development files for %{name}.
 
 %prep
 %setup -q
-%{__aclocal} -I macros --force
-%{__autoconf} --force
-%{__automake} --copy --force-missing
-%{__libtoolize} --copy --force
 
 %build
 export CLASSPATH=
@@ -42,6 +38,9 @@ export JAVAC=%{javac}
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
 export GCJ=%{gcj}
+# workaround:
+# libtool does not use pic_flag when compiling, so we have to force it. 
+export GCJFLAGS="-O2 -fPIC" 
 export CPPFLAGS="-I%{java_home}/include -I%{java_home}/include/linux"
 %configure2_5x --with-jardir=%{_javadir}
 # 64bit java doesn't seem to like parralell build ("Cannot create GC thread. Out of system resources"):
