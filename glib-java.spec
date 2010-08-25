@@ -1,6 +1,6 @@
 Name:           glib-java
 Version:        0.4.2
-Release:        %mkrel 8
+Release:        %mkrel 9
 Epoch:          0
 Summary:        Base Library for the Java-GNOME libraries 
 URL:            http://java-gnome.sourceforge.net
