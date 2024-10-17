@@ -3,7 +3,7 @@ Version:        0.4.2
 Release:        %mkrel 9
 Epoch:          0
 Summary:        Base Library for the Java-GNOME libraries 
-URL:            http://java-gnome.sourceforge.net
+URL:            https://java-gnome.sourceforge.net
 Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/glib-java/0.4/glib-java-%{version}.tar.bz2
 License:        LGPL
 Group:          System/Libraries
